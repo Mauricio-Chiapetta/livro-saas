@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import Logo from "@/images/Logo.svg";
+import Logo from "@/assets/images/Logo.svg";
 import { Button } from "../ui/button";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
@@ -13,12 +13,16 @@ export function Navbar() {
 
   return (
     <>
-      <header className="py-4 flex justify-center">
+      <motion.header
+        className="py-4 flex justify-center"
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ ease: "easeIn" }}
+      >
         <div className="container fixed z-50">
           <div className="border border-white/15 rounded-md bg-white/10 backdrop-blur-md shadow-md dark:bg-transparent">
             {/* Topo da Navbar */}
             <div className="flex justify-between items-center p-4">
-              
               <div>
                 <Image src={Logo} alt="Logo" className="w-auto h-8 md:h-10" />
               </div>
@@ -72,18 +76,12 @@ export function Navbar() {
                   transition={{ duration: 0.3, type: "spring", stiffness: 60 }}
                 >
                   <div className="flex flex-col items-center gap-4 p-6">
-                                    <ToggleTheme />
+                    <ToggleTheme />
 
-                    <Link
-                      href={"/"}
-                      className="py-2 font-semibold"
-                    >
+                    <Link href={"/"} className="py-2 font-semibold">
                       Funcionalidades
                     </Link>
-                    <Link
-                      href={"/"}
-                      className="py-2 font-semibold"
-                    >
+                    <Link href={"/"} className="py-2 font-semibold">
                       Preço
                     </Link>
                     <Button>Login</Button>
@@ -93,7 +91,7 @@ export function Navbar() {
             </AnimatePresence>
           </div>
         </div>
-      </header>
+      </motion.header>
       <div className="pb-24 lg:pb-0"></div>
     </>
   );
