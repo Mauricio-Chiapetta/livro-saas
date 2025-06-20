@@ -7,32 +7,41 @@ import Link from "next/link";
 import { ToggleTheme } from "../ui/ToggleTheme";
 import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
-
+import { usePathname } from "next/navigation";
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-
+  const pathname = usePathname();
+  const isLoginPage = pathname === "/Login";
+  const buttonLabel = isLoginPage ? "Home" : "Login";
+  const buttonLink = isLoginPage ? "/" : "/Login";
   return (
     <>
       <motion.header
         className="py-4 flex justify-center"
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        initial={{ opacity: 0 }}
+        animate={{  opacity: 1 }}
         transition={{ ease: "easeIn" }}
       >
         <div className="container fixed z-50">
-          <div className="border border-white/15 rounded-md bg-white/10 backdrop-blur-md shadow-md dark:bg-transparent">
+          <div className="rounded-md backdrop-blur-md shadow-sm dark:bg-transparent">
             {/* Topo da Navbar */}
             <div className="flex justify-between items-center p-4">
-              <div>
-                <Image src={Logo} alt="Logo" className="w-auto h-8 md:h-10" />
-              </div>
+              <Link href={"/"}>
+                <Image
+                  src={Logo}
+                  alt="Logo"
+                  className="w-auto h-8 md:h-10 dark:invert"
+                />
+              </Link>
 
               {/* Menu Desktop */}
               <nav className="hidden gap-6 items-center md:flex">
                 <Link href={"/"}>Funcionamento</Link>
                 <Link href={"/"}>Preço</Link>
                 <ToggleTheme />
-                <Button variant={"outline"}>Login</Button>
+                <Link href={buttonLink}>
+                  <Button variant={"outline"} className="cursor-pointer">{buttonLabel}</Button>
+                </Link>
               </nav>
 
               {/* Botões Mobile */}
@@ -84,7 +93,9 @@ export function Navbar() {
                     <Link href={"/"} className="py-2 font-semibold">
                       Preço
                     </Link>
-                    <Button>Login</Button>
+                     <Link href={buttonLink}>
+                  <Button variant={"outline"}>{buttonLabel}</Button>
+                </Link>
                   </div>
                 </motion.div>
               )}
@@ -92,7 +103,7 @@ export function Navbar() {
           </div>
         </div>
       </motion.header>
-      <div className="pb-24 lg:pb-0"></div>
+      <div className="pb-12 lg:pb-0"></div>
     </>
   );
 }

@@ -1,4 +1,5 @@
 "use client";
+import PricingCard from "../pricing-card";
 import { Card } from "../ui/Card";
 import { motion } from "motion/react";
 export function Price() {
@@ -29,7 +30,7 @@ export function Price() {
           programação. E por menos de um café por dia.{" "}
         </motion.p>
         <div className="mt-28">
-          <Card />
+          <PricingCard/>
         </div>
       </div>
     </section>

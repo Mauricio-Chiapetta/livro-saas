@@ -34,7 +34,7 @@ export function HowWork() {
             }}
             viewport={{once:true}}
           >
-            <Image src={woman} alt="woman" />
+            <Image src={woman} alt="woman" className="pointer-events-none dark:invert" />
           </motion.div>
           <div className="flex flex-col gap-4">
             {items.map((i) => (
