@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 import { motion } from "motion/react";
 export function Hero() {
   return (
-    <section className="py-40 flex justify-center bg-cover bg-center">
+    <section className="py-40 flex justify-center">
       <div className="container">
         <div className="flex flex-col gap-4">
           <motion.h1
