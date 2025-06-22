@@ -1,6 +1,5 @@
 "use client";
 import { CallToAction } from "@/components/(HomeSections)/CalltoAction";
-import { Footer } from "@/components/(HomeSections)/Footer";
 import { Hero } from "@/components/(HomeSections)/Hero";
 import { HowWork } from "@/components/(HomeSections)/HowWork";
 import { Navbar } from "@/components/(HomeSections)/Navbar";
@@ -19,6 +18,7 @@ export default function Home() {
   }, []);
   return (
     <>
+     <Navbar/>
       <Hero />
       <HowWork />
       <Price />

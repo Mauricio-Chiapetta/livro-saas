@@ -18,7 +18,9 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <Image src={Logo} alt="logo" className="dark:invert" />
+      <Link href={"/"}>
+        <Image src={Logo} alt="logo" className="dark:invert" />
+      </Link>
       <Card className="max-w-sm w-full rounded-2xl mt-12">
         <CardHeader>
           <h2 className="text-xl font-bold">Boas Vindas</h2>

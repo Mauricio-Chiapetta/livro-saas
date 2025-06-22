@@ -2,13 +2,22 @@
 import Image from "next/image";
 import Logo from "@/assets/images/Logo.svg";
 import { Button } from "../ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, User, X } from "lucide-react";
 import Link from "next/link";
 import { ToggleTheme } from "../ui/ToggleTheme";
 import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-export function Navbar() {
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@radix-ui/react-dropdown-menu";
+import { ToggleProfile } from "../ui/ToggleProfile";
+export function Navbar({ userName }: { userName?: string }) {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const isLoginPage = pathname === "/Login";
@@ -19,7 +28,7 @@ export function Navbar() {
       <motion.header
         className="py-4 flex justify-center"
         initial={{ opacity: 0 }}
-        animate={{  opacity: 1 }}
+        animate={{ opacity: 1 }}
         transition={{ ease: "easeIn" }}
       >
         <div className="container fixed z-50">
@@ -40,8 +49,11 @@ export function Navbar() {
                 <Link href={"/"}>Preço</Link>
                 <ToggleTheme />
                 <Link href={buttonLink}>
-                  <Button variant={"outline"} className="cursor-pointer">{buttonLabel}</Button>
+                  <Button variant={"outline"} className="cursor-pointer">
+                    {buttonLabel}
+                  </Button>
                 </Link>
+                <ToggleProfile userName="Mauricio" />
               </nav>
 
               {/* Botões Mobile */}
@@ -93,9 +105,9 @@ export function Navbar() {
                     <Link href={"/"} className="py-2 font-semibold">
                       Preço
                     </Link>
-                     <Link href={buttonLink}>
-                  <Button variant={"outline"}>{buttonLabel}</Button>
-                </Link>
+                    <Link href={buttonLink}>
+                      <Button variant={"outline"}>{buttonLabel}</Button>
+                    </Link>
                   </div>
                 </motion.div>
               )}

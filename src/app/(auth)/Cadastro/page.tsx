@@ -18,7 +18,9 @@ export const metadata = {
 export default async function RegisterPage() {
   return (
     <>
-      <Image src={Logo} alt="Logo" className="dark:invert" />
+      <Link href={"/"}>
+        <Image src={Logo} alt="Logo" className="dark:invert" />
+      </Link>
       <Card className="max-w-sm w-full rounded-2xl mt-12">
         <CardHeader>
           <h2 className="text-xl font-bold">Cadastre-se</h2>
