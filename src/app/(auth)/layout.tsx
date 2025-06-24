@@ -1,5 +1,8 @@
-import { Footer } from "@/components/(HomeSections)/Footer";
-import { Navbar } from "@/components/(HomeSections)/Navbar";
+import { Metadata } from "next";
+
+export const metadata:Metadata = {
+  title: "LivroSaaS | Cadastro",
+};
 
 export default function RootLayout({
   children,

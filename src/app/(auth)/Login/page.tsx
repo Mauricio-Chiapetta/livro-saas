@@ -1,21 +1,25 @@
-import { Button } from "@/components/ui/button";
+import Logo from "@/assets/images/Logo.svg";
+import { auth } from "@/auth";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
 } from "@/components/ui/Card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import Link from "next/link";
 import Image from "next/image";
-import Logo from "@/assets/images/Logo.svg";
+import Link from "next/link";
+import { LoginForm } from "./login-form";
+import { redirect } from "next/navigation";
 
 export const metadata = {
   title: "LivroSaaS | Login",
 };
 
-export default function Page() {
+export default async function Page() {
+  const session = await auth();
+  if (session) {
+    redirect("/dashboard");
+  }
   return (
     <>
       <Link href={"/"}>
@@ -27,29 +31,7 @@ export default function Page() {
           <CardDescription>Faça seu login com email e senha.</CardDescription>
         </CardHeader>
         <CardContent>
-          <div>
-            <Label>Email</Label>
-            <Input
-              type="email"
-              name="email"
-              placeholder="eu@exemplo.com"
-              className="mt-2"
-            />
-          </div>
-          <div className="mt-2">
-            <Label>Senha</Label>
-            <Input
-              type="password"
-              name="password"
-              placeholder="********"
-              className="mt-2"
-            />
-          </div>
-          <div>
-            <Button className="w-full mt-6" type="submit">
-              Login
-            </Button>
-          </div>
+          <LoginForm />
         </CardContent>
       </Card>
       <p className="text-sm text-muted-foreground mt-3">

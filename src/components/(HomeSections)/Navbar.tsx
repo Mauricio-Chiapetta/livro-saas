@@ -110,7 +110,7 @@ export function Navbar({
                     <ToggleTheme />
                     {links.map((link) => (
                       <Link
-                        key={link.href}
+                        key={`${link.label}`}
                         href={link.href}
                         className="py-2 font-semibold"
                       >
