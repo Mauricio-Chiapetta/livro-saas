@@ -1,28 +1,31 @@
 "use client";
 import Image from "next/image";
 import Logo from "@/assets/images/Logo.svg";
-import { Button } from "../ui/button";
-import { Menu, User, X } from "lucide-react";
 import Link from "next/link";
 import { ToggleTheme } from "../ui/ToggleTheme";
-import { motion, AnimatePresence } from "motion/react";
+import { Button } from "../ui/button";
+import { Menu, X } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
-import { usePathname } from "next/navigation";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@radix-ui/react-dropdown-menu";
-import { ToggleProfile } from "../ui/ToggleProfile";
-export function Navbar({ userName }: { userName?: string }) {
+
+type NavbarLink = {
+  label: string;
+  href: string;
+};
+
+interface BaseNavbarProps {
+  links: NavbarLink[];
+  actionButton?: NavbarLink;
+  extraComponent?: React.ReactNode;
+}
+
+export function Navbar({
+  links,
+  actionButton,
+  extraComponent,
+}: BaseNavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname();
-  const isLoginPage = pathname === "/Login";
-  const buttonLabel = isLoginPage ? "Home" : "Login";
-  const buttonLink = isLoginPage ? "/" : "/Login";
+
   return (
     <>
       <motion.header
@@ -45,15 +48,18 @@ export function Navbar({ userName }: { userName?: string }) {
 
               {/* Menu Desktop */}
               <nav className="hidden gap-6 items-center md:flex">
-                <Link href={"/"}>Funcionamento</Link>
-                <Link href={"/"}>Preço</Link>
+                {links.map((link) => (
+                  <Link key={`${link.label}`} href={link.href}>
+                    {link.label}
+                  </Link>
+                ))}
                 <ToggleTheme />
-                <Link href={buttonLink}>
-                  <Button variant={"outline"} className="cursor-pointer">
-                    {buttonLabel}
-                  </Button>
-                </Link>
-                <ToggleProfile userName="Mauricio" />
+                {extraComponent}
+                {actionButton && (
+                  <Link href={actionButton.href}>
+                    <Button variant={"outline"}>{actionButton.label}</Button>
+                  </Link>
+                )}
               </nav>
 
               {/* Botões Mobile */}
@@ -94,20 +100,31 @@ export function Navbar({ userName }: { userName?: string }) {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.3, type: "spring", stiffness: 60 }}
+                  transition={{
+                    duration: 0.3,
+                    type: "spring",
+                    stiffness: 60,
+                  }}
                 >
                   <div className="flex flex-col items-center gap-4 p-6">
                     <ToggleTheme />
-
-                    <Link href={"/"} className="py-2 font-semibold">
-                      Funcionalidades
-                    </Link>
-                    <Link href={"/"} className="py-2 font-semibold">
-                      Preço
-                    </Link>
-                    <Link href={buttonLink}>
-                      <Button variant={"outline"}>{buttonLabel}</Button>
-                    </Link>
+                    {links.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="py-2 font-semibold"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                    {extraComponent}
+                    {actionButton && (
+                      <Link href={actionButton.href}>
+                        <Button variant={"outline"}>
+                          {actionButton.label}
+                        </Button>
+                      </Link>
+                    )}
                   </div>
                 </motion.div>
               )}

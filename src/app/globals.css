@@ -5,6 +5,9 @@
   color: #e3e3e3; 
 }
 
+  html::-webkit-scrollbar {
+  display: none;
+}  
 @custom-variant dark (&:is(.dark *));
 
 @theme {

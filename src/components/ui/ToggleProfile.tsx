@@ -10,20 +10,21 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { User } from "lucide-react";
 
-export function ToggleProfile({userName}: {userName?:string}) {
+export function ToggleProfile({ userName }: { userName?: string }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="icon" className="cursor-pointer">
           <User />
-          <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="center">
+      <DropdownMenuContent align="end">
         <DropdownMenuLabel className="font-light uppercase text-xs">
           {userName}
         </DropdownMenuLabel>
-        <DropdownMenuItem>Logout</DropdownMenuItem>
+        <Button size={"sm"} variant={"outline"}>
+          <DropdownMenuItem>Logout</DropdownMenuItem>
+        </Button>
       </DropdownMenuContent>
     </DropdownMenu>
   );
