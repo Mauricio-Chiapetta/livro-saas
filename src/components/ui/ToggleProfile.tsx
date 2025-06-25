@@ -9,6 +9,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { User } from "lucide-react";
+import Form from "next/form";
+import logoutAction from "@/app/(auth)/(logout)/logoutAction";
 
 export function ToggleProfile({ userName }: { userName?: string }) {
   return (
@@ -22,9 +24,11 @@ export function ToggleProfile({ userName }: { userName?: string }) {
         <DropdownMenuLabel className="font-light uppercase text-xs">
           {userName}
         </DropdownMenuLabel>
-        <Button size={"sm"} variant={"outline"}>
-          <DropdownMenuItem>Logout</DropdownMenuItem>
-        </Button>
+        <Form action={logoutAction}>
+          <Button size={"sm"} variant={"outline"}>
+            <DropdownMenuItem>Logout</DropdownMenuItem>
+          </Button>
+        </Form>
       </DropdownMenuContent>
     </DropdownMenu>
   );
