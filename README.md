@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📚 LivroSaaS – Demo
 
-## Getting Started
+**LivroSaaS** é uma aplicação *demo* de um SaaS (Software as a Service) para aluguel mensal de livros didáticos. Criado com foco em aprendizado e demonstração técnica, este projeto explora uma stack moderna de desenvolvimento fullstack.
 
-First, run the development server:
+![LivroSaSS](https://github.com/user-attachments/assets/e39a6648-7f1a-46dd-88c4-bb568d0af15b)
+
+
+---
+
+## 🚀 Tecnologias Utilizadas
+
+- **Next.js** – Framework React full-stack com suporte ao App Router.
+- **Tailwind CSS** – Estilização com utilitários para uma UI moderna e responsiva.
+- **Framer Motion** – Animações fluidas e interativas.
+- **Auth.js** – Sistema de autenticação robusto e extensível.
+- **Prisma ORM** – Gerenciamento e modelagem de banco de dados.
+- **Turso** – Banco de dados edge baseado em SQLite.
+- **bcrypt** – Criptografia de senhas.
+- **Docker** - criação de container (docker-compose.yml) mySql no inicio do desenvolvimento do projeto.
+
+---
+
+## 🧠 Sobre o Projeto
+
+O objetivo desta demo é apresentar a estrutura e funcionalidades iniciais de um SaaS educacional. Usuários podem se cadastrar, fazer login e visualizar uma base fictícia de aluguel de livros.
+
+---
+
+## ✨ Funcionalidades
+
+- Cadastro e login com autenticação segura
+- Hash de senhas com bcrypt
+- Interface moderna e adaptável com Tailwind CSS
+- Animações com Framer Motion
+- Integração com banco de dados utilizando Prisma + Turso
+- Estrutura de projeto escalável
+
+# 🧪 Como Rodar Localmente
+
+Siga os passos abaixo para rodar a aplicação BookRent localmente em sua máquina:
 
 ```bash
+git clone https://github.com/Mauricio-Chiapetta/livro-saas.git
+cd livro-saas
+npm i
+npx prisma generate
+npx prisma db push
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+Este projeto foi desenvolvido apenas para fins de aprendizado e demonstração. Sinta-se livre para utilizar como referência.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+👨‍💻 Autor
+Mauricio Chiapetta
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
