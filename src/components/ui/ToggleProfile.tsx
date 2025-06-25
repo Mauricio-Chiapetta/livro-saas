@@ -26,7 +26,9 @@ export function ToggleProfile({ userName }: { userName?: string }) {
         </DropdownMenuLabel>
         <Form action={logoutAction}>
           <Button size={"sm"} variant={"outline"}>
-            <DropdownMenuItem>Logout</DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
+              Logout
+            </DropdownMenuItem>
           </Button>
         </Form>
       </DropdownMenuContent>

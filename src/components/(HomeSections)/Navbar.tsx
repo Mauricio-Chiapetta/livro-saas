@@ -9,11 +9,11 @@ import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 
 type NavbarLink = {
-  label: string;
+  label: string 
   href: string;
 };
 
-interface BaseNavbarProps {
+export interface BaseNavbarProps {
   links: NavbarLink[];
   actionButton?: NavbarLink;
   extraComponent?: React.ReactNode;
@@ -49,7 +49,11 @@ export function Navbar({
               {/* Menu Desktop */}
               <nav className="hidden gap-6 items-center md:flex">
                 {links.map((link) => (
-                  <Link key={`${link.label}`} href={link.href}>
+                  <Link
+                    key={`${link.label}`}
+                    href={link.href}
+                    className="border-b border-b-transparent hover:border-b-black transition duration-300"
+                  >
                     {link.label}
                   </Link>
                 ))}
@@ -57,7 +61,7 @@ export function Navbar({
                 {extraComponent}
                 {actionButton && (
                   <Link href={actionButton.href}>
-                    <Button variant={"outline"}>{actionButton.label}</Button>
+                    <Button variant={"outline"} className="cursor-pointer">{actionButton.label}</Button>
                   </Link>
                 )}
               </nav>

@@ -1,31 +1,22 @@
-"use client";
+import { auth } from "@/auth";
 import { CallToAction } from "@/components/(HomeSections)/CalltoAction";
+import { ClientLenis } from "@/components/(HomeSections)/ClientLenis";
 import { Hero } from "@/components/(HomeSections)/Hero";
 import { HowWork } from "@/components/(HomeSections)/HowWork";
 import { Navbar } from "@/components/(HomeSections)/Navbar";
 import { Price } from "@/components/(HomeSections)/Price";
 import { ScrollLinked } from "@/components/ui/ScrollLinked";
-import Lenis from "lenis";
-import { usePathname } from "next/navigation";
-import { useEffect } from "react";
-export default function Home() {
-  const pathname = usePathname();
-  const isLoginPage = pathname === "/Login";
-  const buttonLabel = isLoginPage ? "Home" : "Login";
-  const buttonLink = isLoginPage ? "/" : "/Login";
+
+export default async function Home() {
+  const session = await auth();
+  const buttonLabel = session ? "Dashboard" : "Login";
+  const buttonLink = session ? "/dashboard" : "/Login";
+
   const links = [
     { label: "Funcionamento", href: "/" },
     { label: "Preço", href: "/" },
   ];
-  useEffect(() => {
-    const lenis = new Lenis();
 
-    function raf(time: any) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-  }, []);
   return (
     <>
       <ScrollLinked />
@@ -33,10 +24,11 @@ export default function Home() {
         links={links}
         actionButton={{ label: buttonLabel, href: buttonLink }}
       />
-      <Hero />
+      <Hero/>
       <HowWork />
       <Price />
       <CallToAction />
+      <ClientLenis />
     </>
   );
 }
