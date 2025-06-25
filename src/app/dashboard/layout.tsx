@@ -1,4 +1,4 @@
-import { auth } from "@/auth";
+import { auth } from "../../../auth";
 import { Navbar } from "@/components/(HomeSections)/Navbar";
 import { ToggleProfile } from "@/components/ui/ToggleProfile";
 import { redirect } from "next/navigation";

@@ -8,7 +8,7 @@ import Link from "next/link";
 import Logo from "@/assets/images/Logo.svg";
 import Image from "next/image";
 import { RegisterForm } from "./register-form";
-import { auth } from "@/auth";
+import { auth } from "../../../../auth";
 import { redirect } from "next/navigation";
 
 export const metadata = {

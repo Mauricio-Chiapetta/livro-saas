@@ -1,4 +1,4 @@
-import { auth } from "@/auth";
+import { auth } from "../../../auth";
 import { Button } from "./button";
 
 export default async function NavbarButton({children}: {children:React.ReactNode}) {

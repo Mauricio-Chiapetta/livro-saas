@@ -1,4 +1,4 @@
-import { auth } from "@/auth";
+import { auth } from "../../auth";
 import { CallToAction } from "@/components/(HomeSections)/CalltoAction";
 import { ClientLenis } from "@/components/(HomeSections)/ClientLenis";
 import { Hero } from "@/components/(HomeSections)/Hero";
