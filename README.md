@@ -17,6 +17,7 @@
 - **Turso** – Banco de dados edge baseado em SQLite.
 - **bcrypt** – Criptografia de senhas.
 - **Docker** - criação de container (docker-compose.yml) mySql no inicio do desenvolvimento do projeto.
+- **Stripe** - Pagamentos/Assinaturas.
 
 ---
 
