@@ -16,7 +16,7 @@ export default async function DashboardLayout({
 }) {
   // protegendo a rota /dashboard
   const session = await auth();
-  const username = session?.user?.name
+  const username = session?.user?.name;
   if (!session) {
     redirect("/Login");
   }
@@ -24,10 +24,12 @@ export default async function DashboardLayout({
     <>
       <Navbar
         links={links}
-        extraComponent={<ToggleProfile userName={username ?? ''} />}
+        extraComponent={<ToggleProfile userName={username ?? ""} />}
       />
-      <div className="py-24 lg:px-10 px-3 mt-16">
-        <div className="container">{children}</div>
+      <div className="flex flex-col items-center">
+        <div className="container py-24 sm:px-10">
+          {children}
+        </div>
       </div>
     </>
   );

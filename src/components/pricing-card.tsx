@@ -7,9 +7,16 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/Card";
-import { Button } from "./ui/button";
+import { PaymentButton } from "./payment-button";
+import { fetchSubscriptionByEmail } from "@/lib/stripe";
+import { auth } from "../../auth";
 
-export default function PricingCard() {
+export  async function PricingCard() {
+
+  const session = await auth()
+  const userEmail = session?.user?.email as string
+  const subscription = await fetchSubscriptionByEmail(userEmail)
+  
   return (
     <div className="flex justify-center">
       <Card className="w-[350px] text-left md:mt-20 mt-10">
@@ -46,7 +53,7 @@ export default function PricingCard() {
           </ul>
         </CardContent>
         <CardFooter>
-          <Button className="w-full">Assine Agora</Button>
+          {!subscription&&<PaymentButton>Assine Agora</PaymentButton>}
         </CardFooter>
       </Card>
     </div>

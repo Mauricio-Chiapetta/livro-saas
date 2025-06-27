@@ -35,7 +35,7 @@ export function Navbar({
         transition={{ ease: "easeIn" }}
       >
         <div className="container fixed z-50">
-          <div className="rounded-md backdrop-blur-md shadow-sm dark:bg-transparent">
+          <div className="rounded-md backdrop-blur-lg shadow-sm dark:bg-transparent dark:shadow-white/15">
             {/* Topo da Navbar */}
             <div className="flex justify-between items-center p-4">
               <Link href={"/"}>
@@ -52,7 +52,7 @@ export function Navbar({
                   <Link
                     key={`${link.label}`}
                     href={link.href}
-                    className="border-b border-b-transparent hover:border-b-black transition duration-300"
+                    className="border-b border-b-transparent hover:border-b-black dark:hover:border-b-white transition duration-300"
                   >
                     {link.label}
                   </Link>
