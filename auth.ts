@@ -8,6 +8,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       credentials: {
         email: {},
         password: {},
+        
       },
       authorize: async (credentials) => {
         console.log(credentials);
@@ -20,7 +21,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         );
 
         return user;
+        
       },
     }),
+    
   ],
 });
